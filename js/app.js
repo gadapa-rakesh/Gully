@@ -145,6 +145,14 @@ const Game = {
     out : function(){
       var battingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamA : this.currentMatch.teamB;
       battingTeam.wickets++;
+      battingTeam.balls++;
+      if(battingTeam.balls == 6){
+        battingTeam.balls = 0;
+        battingTeam.overs++;
+        if(battingTeam.overs >= this.currentMatch.numOvers){
+          this.endInnings();
+        }
+      }
     },
     endInnings : function(){
       if(this.currentMatch.currentInnings == 2){
