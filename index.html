@@ -104,6 +104,9 @@
 
     <script id="game" type="text/x-template">
         <div class="container">
+            <div class="alert alert-warning py-1 mb-2 text-center" role="alert" v-if="showRunsRequiredBoard()">
+                Required {{requiredRuns}} runs from {{requiredBalls}} balls
+            </div>
             <div class="row">
                 <div class="col-6 pr-1">
                     <button class="btn btn-block" v-bind:class="boardColorTeamA">
@@ -138,31 +141,30 @@
                     </button>
                 </div>
             </div>
-            <br>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col col-sm-12 text-center">
-                    <button @click="addScore(0)" class="btn btn-primary btn-lg">0</button>
-                    <button @click="addScore(1)" class="btn btn-primary btn-lg ml-4">1</button>
-                    <button @click="addScore(2)" class="btn btn-primary btn-lg ml-4">2</button>
-                    <button @click="addScore(3)" class="btn btn-primary btn-lg ml-4">3</button>
+                    <button @click="addScore(0)" class="btn btn-primary btn-lg px-4">0</button>
+                    <button @click="addScore(1)" class="btn btn-primary btn-lg ml-2 px-4">1</button>
+                    <button @click="addScore(2)" class="btn btn-primary btn-lg ml-2 px-4">2</button>
+                    <button @click="addScore(3)" class="btn btn-primary btn-lg ml-2 px-4">3</button>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col col-sm-12 text-center">
+                    <button @click="addScore(4)" class="btn btn-success btn-lg">Four 4</button>
+                    <button @click="addScore(6)" class="btn btn-success btn-lg">Six 6</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col col-sm-12 text-center">
-                        <button @click="addScore(4)" class="btn btn-success btn-lg mt-4">FOUR 4</button>
-                        <button @click="addScore(6)" class="btn btn-success btn-lg mt-4 ml-4">SIX 6</button>
+                    <button @click="addScore(99)" class="btn btn-warning btn-lg mt-4">WIDE/NOBE</button>
+                    <button @click="out()" class="btn btn-danger btn-lg mt-4 ml-4"><i class="fa fa-hand-o-up fa-lg" aria-hidden="true"></i> OUT</button>
                 </div>
             </div>
             <div class="row">
-                    <div class="col col-sm-12 text-center">
-                            <button @click="addScore(99)" class="btn btn-warning btn-lg mt-4">WIDE/NOBE</button>
-                            <button @click="out()" class="btn btn-danger btn-lg mt-4 ml-4"><i class="fa fa-hand-o-up fa-lg" aria-hidden="true"></i> OUT</button>
-                    </div>
-            </div>
-            <div class="row">
-                    <div class="col col-sm-12 text-center">
-                            <button @click="endInnings" class="btn btn-light btn-block mt-4">End Innings</button>
-                    </div>
+                <div class="col col-sm-12 text-center">
+                    <button @click="endInnings" class="btn btn-light btn-block mt-4">End Innings</button>
+                </div>
             </div>
         </div>
     </script>
