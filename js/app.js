@@ -2,9 +2,9 @@
 var MATCHES = [];
 var CURRENT_MATCH;
 
-window.onbeforeunload = function(){
-  return 'Data will be lost, Save it first. Are you sure?'
-}
+// window.onbeforeunload = function(){
+//   return 'Data will be lost, Save it first. Are you sure?'
+// }
 
 // 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter and then call `Vue.use(VueRouter)`.
 
@@ -117,11 +117,26 @@ const Game = {
         'btn-secondary' : this.currentMatch.whosBatting != this.currentMatch.teamB.name,
         'btn-success' : this.currentMatch.whosBatting == this.currentMatch.teamB.name
       }
+    },
+    requiredRuns : function(){
+      var battingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamA : this.currentMatch.teamB;
+      var bowlingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamB : this.currentMatch.teamA;
+      var output = bowlingTeam.totalScore - battingTeam.totalScore;
+      return output > 0 ? String(output + 1) : String(0);
+    },
+    requiredBalls : function(){
+      var battingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamA : this.currentMatch.teamB;
+      return String(((this.currentMatch.numOvers - battingTeam.overs) * 6) - battingTeam.balls);
     }
   },
   methods : {
+    showRunsRequiredBoard : function(){
+      var battingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamA : this.currentMatch.teamB;
+      return battingTeam.overs >= this.currentMatch.numOvers/2 && this.currentMatch.currentInnings == 2;
+    },
     addScore : function(runs){
       var battingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamA : this.currentMatch.teamB;
+      var bowlingTeam = this.currentMatch.whosBatting == this.currentMatch.teamA.name ? this.currentMatch.teamB : this.currentMatch.teamA;
       var countBalls = true;
       if(runs == 99 || runs == 999) {
         if(this.currentMatch.isWideARun){
@@ -133,7 +148,14 @@ const Game = {
         }
       }
       if(countBalls) battingTeam.balls++;
+
       battingTeam.totalScore += runs;
+
+      if(this.currentMatch.currentInnings == 2 && battingTeam.totalScore > bowlingTeam.totalScore){
+        alert('Congrats '+battingTeam.name);
+        this.endInnings();
+      }
+
       if(battingTeam.balls == 6){
         battingTeam.balls = 0;
         battingTeam.overs++;
