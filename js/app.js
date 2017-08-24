@@ -31,6 +31,7 @@ const Start = {
       teamB : '',
       numOvers : '',
       isWideARun : false,
+      // isWideBallCounts : false,
       isRegisterTeam : false
     }
   },
