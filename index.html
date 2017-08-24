@@ -25,36 +25,40 @@
     <![endif]-->
     <script id="start" type="text/x-template">
         <div class="container">
-            <div class="form-group">
-                <label for="teamAInput" class="col-lg-2 control-label">Team A</label>
-                <div class="col-lg-10">
+            <div class="alert alert-primary">
+                <h5>Team Details</h5>
+                <hr>
+                <div class="form-group">
+                    <label for="teamAInput" class="control-label">Team A</label>
                     <input v-model='teamA' type="text" class="form-control" id="teamAInput" placeholder="Enter Team A's name">
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="teamBInput" class="col-lg-2 control-label">Team B</label>
-                <div class="col-lg-10">
+                <div class="form-group">
+                    <label for="teamBInput" class="control-label">Team B</label>
                     <input v-model='teamB' type="text" class="form-control" id="teamBInput" placeholder="Enter Team B's name">
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="oversInput" class="col-lg-2 control-label">Number Of Overs</label>
-                <div class="col-lg-10">
+                <div class="form-group">
+                    <label for="oversInput" class="control-label">Number Of Overs</label>
                     <input v-model='numOvers' type="number" class="form-control" id="oversInput" placeholder="Enter number of over for this match">
                 </div>
             </div>
-
-            <div class="checkbox">
-                <label class="form-check-label"><input v-model='isWideARun' type="checkbox"> Count Wide As Run?</label>
+            <div class="alert alert-info">
+                <h5>Wide / Nobe</h5>
+                <hr>
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <div class="checkbox">
+                            <label class="form-check-label px-0"><input v-model='isWideARun' type="checkbox"> Count Run</label>
+                        </div>
+                    </div>
+                    <div class="col col-sm-6">
+                        <!-- <div class="checkbox">
+                            <label class="form-check-label"><input v-model='isWideBallCounts' type="checkbox"> Count Ball</label>
+                        </div> -->
+                    </div>
+                </div>
             </div>
-            <br/>
-            <div class="checkbox">
-                <label class="form-check-label"><input v-model='isRegisterTeam' type="checkbox"> Want to Register Team?</label>
-            </div>
-            <br/>
-            <!-- <router-link to="/toss" class="btn btn-primary btn-block" @click="handleLetsBegin()">Lets Begin</router-link> -->
             <button class="btn btn-primary btn-block" @click="handleLetsBegin()">Lets Begin</button>
         </div>
     </script>
@@ -141,18 +145,18 @@
                     </button>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-4">
                 <div class="col col-sm-12 text-center">
-                    <button @click="addScore(0)" class="btn btn-primary btn-lg px-4">0</button>
-                    <button @click="addScore(1)" class="btn btn-primary btn-lg ml-2 px-4">1</button>
-                    <button @click="addScore(2)" class="btn btn-primary btn-lg ml-2 px-4">2</button>
-                    <button @click="addScore(3)" class="btn btn-primary btn-lg ml-2 px-4">3</button>
+                    <button @click="addScore(0)" class="btn btn-primary btn-lg px-4 py-3 rounded-circle font-weight-bold">0</button>
+                    <button @click="addScore(1)" class="btn btn-primary btn-lg ml-2 px-4 py-3 rounded-circle font-weight-bold">1</button>
+                    <button @click="addScore(2)" class="btn btn-primary btn-lg ml-2 px-4 py-3 rounded-circle font-weight-bold">2</button>
+                    <button @click="addScore(3)" class="btn btn-primary btn-lg ml-2 px-4 py-3 rounded-circle font-weight-bold">3</button>
                 </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-4">
                 <div class="col col-sm-12 text-center">
-                    <button @click="addScore(4)" class="btn btn-success btn-lg">Four 4</button>
-                    <button @click="addScore(6)" class="btn btn-success btn-lg">Six 6</button>
+                    <button @click="addScore(4)" class="btn btn-dark btn-lg mx-3 px-4 py-3 rounded-circle font-weight-bold">4</button>
+                    <button @click="addScore(6)" class="btn btn-dark btn-lg mx-3 px-4 py-3 rounded-circle font-weight-bold">6</button>
                 </div>
             </div>
             <div class="row">
