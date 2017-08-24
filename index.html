@@ -103,6 +103,30 @@
                 <p class="text-center">A place where you can maintain the score board</p>
                 <router-link to="/start" class="btn btn-primary btn-block">Lets Start</router-link>
             </div>
+            <div class="alert alert-info">
+                <h4>Previous Matches</h4>
+                <hr>
+                <div class="row">
+                    <div class="col col-sm-12 p-0">
+                        <table class="table p-0 m-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">TeamA</th>
+                                    <th class="text-center">TeamB</th>
+                                    <th class="text-center">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="match in matches" @click="selectMatch(match)">
+                                    <td>{{match.teamA.name}}</td>
+                                    <td>{{match.teamB.name}}</td>
+                                    <td>{{match.displayDate}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </script>
 
@@ -206,6 +230,7 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
     <!-- <script src="js/vue-strap.js"></script> -->
 </body>
 <script src="js/app.js"></script>
