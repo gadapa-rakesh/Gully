@@ -11,7 +11,7 @@
     <!-- Bootstrap -->
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="js/vue.js"></script>
     <script src="js/vue-router.js"></script>
 
@@ -23,7 +23,7 @@
     <![endif]-->
     <script id="start" type="text/x-template">
         <div class="container">
-            <div class="alert alert-primary">
+            <div class="alert alert-primary mt-2">
                 <h5>Team Details</h5>
                 <hr>
                 <div class="form-group">
@@ -63,7 +63,7 @@
 
     <script id="toss" type="text/x-template">
         <div class="container">
-            <div class="alert alert-secondary">
+            <div class="alert alert-secondary mt-2">
                 <div class="row" v-if="!message && !isChecking">
                     <div class="col">
                         <h1 class="text-center">Toss Time <i class="fa fa-hand-peace-o" aria-hidden="true"></i></h1>
@@ -96,7 +96,7 @@
 
     <script id="home" type="text/x-template">
         <div class="container">
-            <div class="jumbotron">
+            <div class="jumbotron mt-2">
                 <h1 class="text-center">Gally Cricket</h1>
                 <p class="text-center">A place where you can maintain the score board</p>
                 <router-link to="/start" class="btn btn-primary btn-block">Lets Start</router-link>
@@ -130,8 +130,12 @@
 
     <script id="game" type="text/x-template">
         <div class="container">
-            <div class="alert alert-warning py-1 mb-2 text-center" role="alert" v-if="showRunsRequiredBoard()">
-                Required {{requiredRuns}} runs from {{requiredBalls}} balls
+            <div class="row mt-2">
+                <div class="col col-sm-12">
+                    <div class="alert alert-warning py-1 mb-2 text-center" role="alert" v-if="showRunsRequiredBoard()">
+                        Required {{requiredRuns}} runs from {{requiredBalls}} balls
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-6 pr-1">
@@ -167,7 +171,7 @@
                     </button>
                 </div>
             </div>
-            <div class="row mt-4">
+            <div class="row mt-3">
                 <div class="col col-sm-12 text-center">
                     <button @click="addScore(0)" class="btn btn-primary btn-lg px-4 py-3 rounded-circle font-weight-bold">0</button>
                     <button @click="addScore(1)" class="btn btn-primary btn-lg ml-2 px-4 py-3 rounded-circle font-weight-bold">1</button>
@@ -175,21 +179,21 @@
                     <button @click="addScore(3)" class="btn btn-primary btn-lg ml-2 px-4 py-3 rounded-circle font-weight-bold">3</button>
                 </div>
             </div>
-            <div class="row mt-4">
+            <div class="row mt-3">
                 <div class="col col-sm-12 text-center">
                     <button @click="addScore(4)" class="btn btn-dark btn-lg mx-3 px-4 py-3 rounded-circle font-weight-bold">4</button>
                     <button @click="addScore(6)" class="btn btn-dark btn-lg mx-3 px-4 py-3 rounded-circle font-weight-bold">6</button>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col col-sm-12 text-center">
-                    <button @click="addScore(99)" class="btn btn-warning btn-lg mt-4">WIDE/NOBE</button>
-                    <button @click="out()" class="btn btn-danger btn-lg mt-4 ml-4">OUT</button>
+                    <button @click="addScore(99)" class="btn btn-warning btn-lg">WIDE/NOBE</button>
+                    <button @click="out()" class="btn btn-danger btn-lg ml-4">OUT</button>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col col-sm-12 text-center">
-                    <button @click="endInnings" class="btn btn-light btn-block mt-4">End Innings</button>
+                    <button @click="endInnings" class="btn btn-light btn-block">End Innings</button>
                 </div>
             </div>
         </div>
@@ -197,7 +201,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand text-white">Gally</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -212,7 +216,6 @@
         </div>
     </nav>
 
-    <br/><br/><br/>
     <div id="app">
         <!-- route outlet -->
         <!-- component matched by the route will render here -->
